@@ -1,11 +1,13 @@
 #include "ft_printf.h"
 
-const char *ft_put_specificator(const char *str, va_list *arg)
+const char	*ft_put_specificator(const char *str, va_list *arg)
 {
-	//t_format_info oleg;
-	//ft_parse_specificatior()
-	if (*(++str) == 'd')
+	t_specs spec_info;
+	ft_parser(++str, &spec_info);
+	if (*str == 'd')
 		ft_print_d(arg++);
+	if (*str == 'c')
+		ft_putchar(va_arg(*arg, int));
 	return (str);
 }
 
