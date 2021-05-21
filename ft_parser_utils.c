@@ -8,7 +8,7 @@ int	ft_parse_flags(const char *str, t_specs *spec_info)
 	while (ft_strchr("-0", *str))
 	{
 		if (*str == '-')
-			spec_info->flag = '-'
+			spec_info->flag = '-';
 		else
 			spec_info->flag = '0';
 	}
