@@ -8,41 +8,76 @@ int	ft_parse_flags(const char *str, t_specs *spec_info)
 	while (ft_strchr("-0", *str))
 	{
 		if (*str == '-')
-			spec_info->flag = '-';
-		else
-			spec_info->flag = '0';
+			spec_info->flag_minus = 1;
+		else if (*str == '0')
+			spec_info->flag_zero = 1;
+		str++;
+		n++;
 	}
 	return (n);
 }
 
-int ft_parse_width(const char *str, t_specs *spec_info)
+int ft_parse_width(const char *str, t_specs *spec_info, va_list *arg)
 {
+	int tmp;
 	int n;
 
 	n = 0;
+	if (*str == '*')
+	{
+		tmp = va_arg(*arg, int);
+		if (tmp < 0)
+		{
+			spec_info->width = -tmp;
+			spec_info->flag_minus = 1;
+		}
+		else
+			spec_info->width = tmp;
+		n++;
+	}
+	else
+	{
+		spec_info->width = ft_atoi(str);
+		tmp = spec_info->width;
+		while (tmp)
+		{
+			tmp /= 10;
+			n++;
+		}
+	}
 	return (n);
 }
 
-int ft_parse_precision(const char *str, t_specs *spec_info)
+int ft_parse_precision(const char *str, t_specs *spec_info, va_list *arg)
 {
-	int n;
+	int	n;
+	int number;
 
 	n = 0;
-	return (n);
-}
-
-int ft_parse_length(const char *str, t_specs *spec_info)
-{
-	int n;
-
-	n = 0;
+	if (*str == '.' && str++)
+	{
+		n++;
+		if (*str == '*' && n++)
+			spec_info->precision = va_arg(*arg, int);
+		else if (ft_strchr("0123456789", *str))
+		{
+			while (*str == '0')
+				str++;
+			spec_info->precision = ft_atoi(str);
+			number = spec_info->precision;
+			while (number > 0)
+			{
+				number /= 10;
+				n++;
+			}
+		}
+	}
 	return (n);
 }
 
 int ft_parse_type(const char *str, t_specs *spec_info)
 {
-	int n;
-
-	n = 0;
-	return (n);
+	if (ft_strchr("cspdiuxX%", *str))
+		spec_info->type = *str;
+	return (1);
 }

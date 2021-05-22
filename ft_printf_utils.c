@@ -2,11 +2,11 @@
 
 void ft_init_specs(t_specs *spec_info)
 {
-	spec_info->flag = '\0';
+	spec_info->flag_minus = 0;
+	spec_info->flag_zero = 0;
 	spec_info->width = 0;
 	spec_info->precision = 0;
 	spec_info->type = '\0';
-	spec_info->length = '\0';
 }
 
 void ft_putchar(char c)
