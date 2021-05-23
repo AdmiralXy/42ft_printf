@@ -2,7 +2,7 @@
 
 int main(void)
 {
-	printf("Hello world! %d HELLO\n", 1000);
-	ft_printf("Hello world! %d HELLO\n", 1000);
+	printf("%022d|\n", -1000);
+	ft_printf("%022d|\n", -1000);
 	return (1);
 }

@@ -9,6 +9,14 @@ void	ft_print_specs(t_specs *spec_info)
 	printf("type: %c\n", spec_info->type);
 }
 
+void	ft_fix_specs(t_specs *spec_info)
+{
+	if (spec_info->flag_minus && spec_info->flag_zero)
+		spec_info->flag_zero = 0;
+	if (spec_info->precision && spec_info->flag_zero)
+		spec_info->flag_zero = 0;
+}
+
 const char	*ft_put_specificator(const char *str, va_list *arg)
 {
 	int n;
@@ -16,11 +24,12 @@ const char	*ft_put_specificator(const char *str, va_list *arg)
 	n = 0;
 	t_specs spec_info;
 	n = ft_parser(++str, &spec_info, arg);
+	ft_fix_specs(&spec_info);
 	if (spec_info.type == 'd')
-		ft_print_d(arg);
+		ft_print_d(arg, &spec_info);
 	if (*str == 'c')
 		ft_putchar(va_arg(*arg, int));
-	return (str + n);
+	return (str + (n - 1));
 }
 
 int	ft_printf(const char *format, ...)

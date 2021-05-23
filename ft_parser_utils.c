@@ -62,7 +62,10 @@ int ft_parse_precision(const char *str, t_specs *spec_info, va_list *arg)
 		else if (ft_strchr("0123456789", *str))
 		{
 			while (*str == '0')
+			{
 				str++;
+				n++;
+			}
 			spec_info->precision = ft_atoi(str);
 			number = spec_info->precision;
 			while (number > 0)
