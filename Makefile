@@ -23,4 +23,7 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 
+norm:
+	norminette $(SRCS)
+
 re: clean all

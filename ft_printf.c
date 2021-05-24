@@ -21,10 +21,10 @@ void	ft_fix_specs(t_specs *spec_info)
 
 const char	*ft_put_specificator(const char *str, va_list *arg, int *n)
 {
-	int i;
+	int		i;
+	t_specs	spec_info;
 
 	i = 0;
-	t_specs spec_info;
 	i = ft_parser(++str, &spec_info, arg);
 	ft_fix_specs(&spec_info);
 	if (spec_info.type == 'd' || spec_info.type == 'i' || spec_info.type == 'u')
@@ -36,8 +36,8 @@ const char	*ft_put_specificator(const char *str, va_list *arg, int *n)
 
 int	ft_printf(const char *format, ...)
 {
-	va_list ap;
-	int n;
+	va_list	ap;
+	int		n;
 
 	n = 0;
 	va_start(ap, format);

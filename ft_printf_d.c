@@ -54,7 +54,8 @@ int	ft_aligner(char *nbr, t_specs *spec_info)
 		ft_putchar(spec_info->flag_zero);
 		n++;
 	}
-	if (spec_info->negative && spec_info->flag_zero == ' ' && !spec_info->flag_minus && ++n)
+	if (spec_info->negative && spec_info->flag_zero == ' '
+		&& !spec_info->flag_minus && ++n)
 		ft_putchar('-');
 	if (!spec_info->flag_minus)
 		n += ft_putstr_count(nbr + spec_info->negative, spec_info);

@@ -1,23 +1,13 @@
 #include "ft_printf.h"
 
-void ft_init_specs(t_specs *spec_info)
-{
-	spec_info->flag_minus = 0;
-	spec_info->flag_zero = ' ';
-	spec_info->width = 0;
-	spec_info->precision = -1;
-	spec_info->type = '\0';
-	spec_info->negative = 0;
-}
-
-void ft_putchar(char c)
+void	ft_putchar(char c)
 {
 	write(1, &c, 1);
 }
 
 int	ft_putstr_count(char *str, t_specs *spec_info)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (*str == '0' && spec_info->precision == 0)
@@ -45,7 +35,7 @@ int	ft_strlen(const char *s)
 
 void	ft_putnbr(int nb)
 {
-	int second;
+	int	second;
 
 	second = nb % 10;
 	if (nb < -9 || nb > 9)

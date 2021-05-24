@@ -1,8 +1,18 @@
 #include "ft_printf.h"
 
+void	ft_init_specs(t_specs *spec_info)
+{
+	spec_info->flag_minus = 0;
+	spec_info->flag_zero = ' ';
+	spec_info->width = 0;
+	spec_info->precision = -1;
+	spec_info->type = '\0';
+	spec_info->negative = 0;
+}
+
 int	ft_parse_flags(const char *str, t_specs *spec_info)
 {
-	int n;
+	int	n;
 
 	n = 0;
 	while (ft_strchr("-0", *str))
@@ -17,10 +27,10 @@ int	ft_parse_flags(const char *str, t_specs *spec_info)
 	return (n);
 }
 
-int ft_parse_width(const char *str, t_specs *spec_info, va_list *arg)
+int	ft_parse_width(const char *str, t_specs *spec_info, va_list *arg)
 {
-	int tmp;
-	int n;
+	int	tmp;
+	int	n;
 
 	n = 0;
 	if (*str == '*')
@@ -39,19 +49,16 @@ int ft_parse_width(const char *str, t_specs *spec_info, va_list *arg)
 	{
 		spec_info->width = ft_atoi(str);
 		tmp = spec_info->width;
-		while (tmp)
-		{
+		while (tmp && ++n)
 			tmp /= 10;
-			n++;
-		}
 	}
 	return (n);
 }
 
-int ft_parse_precision(const char *str, t_specs *spec_info, va_list *arg)
+int	ft_parse_precision(const char *str, t_specs *spec_info, va_list *arg)
 {
 	int	n;
-	int number;
+	int	number;
 
 	n = 0;
 	if (*str == '.' && str++)
@@ -76,7 +83,7 @@ int ft_parse_precision(const char *str, t_specs *spec_info, va_list *arg)
 	return (n);
 }
 
-int ft_parse_type(const char *str, t_specs *spec_info)
+int	ft_parse_type(const char *str, t_specs *spec_info)
 {
 	if (ft_strchr("cspdiuxX%", *str))
 		spec_info->type = *str;

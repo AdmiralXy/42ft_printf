@@ -1,9 +1,9 @@
 #include "ft_printf.h"
 #include "ft_parser.h"
 
-int ft_parser(const char *str, t_specs *spec_info, va_list *arg)
+int	ft_parser(const char *str, t_specs *spec_info, va_list *arg)
 {
-	int n;
+	int	n;
 
 	n = 0;
 	ft_init_specs(spec_info);
