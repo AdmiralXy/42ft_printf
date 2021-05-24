@@ -29,8 +29,8 @@ const char	*ft_put_specificator(const char *str, va_list *arg, int *n)
 	ft_fix_specs(&spec_info);
 	if (spec_info.type == 'd' || spec_info.type == 'i' || spec_info.type == 'u')
 		*n += ft_print_d(arg, &spec_info);
-	if (*str == 'c')
-		ft_putchar(va_arg(*arg, int));
+	if (spec_info.type == 'c')
+		*n += ft_print_c(arg, &spec_info);
 	return (str + (i - 1));
 }
 

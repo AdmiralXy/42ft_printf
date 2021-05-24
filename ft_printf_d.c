@@ -76,9 +76,6 @@ int	ft_print_d(va_list *arg, t_specs *spec_info)
 	number = ft_itoa(n);
 	n = 0;
 	number = ft_precision(number, spec_info);
-	if (spec_info->width > ft_strlen(number))
-		n += ft_aligner(number, spec_info);
-	else
-		n += ft_aligner(number, spec_info);
+	n += ft_aligner(number, spec_info);
 	return (n);
 }
