@@ -63,7 +63,7 @@ int	ft_aligner(char *nbr, t_specs *spec_info)
 	return (n);
 }
 
-int	ft_print_d(va_list *arg, t_specs *spec_info)
+int	ft_print_d_i(va_list *arg, t_specs *spec_info)
 {
 	char	*number;
 	int		n;

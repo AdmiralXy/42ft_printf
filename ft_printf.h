@@ -34,7 +34,7 @@ void	ft_init_specs(t_specs *spec_info);
 void	ft_print_specs(t_specs *spec_info); // delete
 
 // -- Print D -- //
-int		ft_print_d(va_list *arg, t_specs *spec_info);
+int		ft_print_d_i(va_list *arg, t_specs *spec_info);
 int		ft_print_c(va_list *arg, t_specs *spec_info);
 
 // -- Parser Funcs -- //
