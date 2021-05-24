@@ -11,6 +11,5 @@ int ft_parser(const char *str, t_specs *spec_info, va_list *arg)
 	n += ft_parse_width(str + n, spec_info, arg);
 	n += ft_parse_precision(str + n, spec_info, arg);
 	n += ft_parse_type(str + n, spec_info);
-
 	return (n);
 }

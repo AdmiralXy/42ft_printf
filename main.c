@@ -2,7 +2,8 @@
 
 int main(void)
 {
-	printf("%022d|\n", -1000);
-	ft_printf("%022d|\n", -1000);
+	printf("\n%d\n\n", printf("%u", -1));
+
+	printf("\n%d\n", ft_printf("%u", -1));
 	return (1);
 }

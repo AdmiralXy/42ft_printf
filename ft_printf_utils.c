@@ -3,10 +3,11 @@
 void ft_init_specs(t_specs *spec_info)
 {
 	spec_info->flag_minus = 0;
-	spec_info->flag_zero = 0;
+	spec_info->flag_zero = ' ';
 	spec_info->width = 0;
-	spec_info->precision = 0;
+	spec_info->precision = -1;
 	spec_info->type = '\0';
+	spec_info->negative = 0;
 }
 
 void ft_putchar(char c)
@@ -14,16 +15,22 @@ void ft_putchar(char c)
 	write(1, &c, 1);
 }
 
-void ft_putstr(char *str)
+int	ft_putstr_count(char *str, t_specs *spec_info)
 {
 	int i;
 
 	i = 0;
+	if (*str == '0' && spec_info->precision == 0)
+	{
+		ft_putchar(' ');
+		return (1);
+	}
 	while (str[i] != '\0')
 	{
 		ft_putchar(str[i]);
 		i++;
 	}
+	return (i);
 }
 
 int	ft_strlen(const char *s)

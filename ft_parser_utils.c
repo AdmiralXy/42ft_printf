@@ -10,7 +10,7 @@ int	ft_parse_flags(const char *str, t_specs *spec_info)
 		if (*str == '-')
 			spec_info->flag_minus = 1;
 		else if (*str == '0')
-			spec_info->flag_zero = 1;
+			spec_info->flag_zero = '0';
 		str++;
 		n++;
 	}
@@ -56,16 +56,14 @@ int ft_parse_precision(const char *str, t_specs *spec_info, va_list *arg)
 	n = 0;
 	if (*str == '.' && str++)
 	{
+		spec_info->precision = 0;
 		n++;
 		if (*str == '*' && n++)
 			spec_info->precision = va_arg(*arg, int);
 		else if (ft_strchr("0123456789", *str))
 		{
-			while (*str == '0')
-			{
+			while (*str == '0' && n++)
 				str++;
-				n++;
-			}
 			spec_info->precision = ft_atoi(str);
 			number = spec_info->precision;
 			while (number > 0)

@@ -12,39 +12,46 @@ void	ft_print_specs(t_specs *spec_info)
 void	ft_fix_specs(t_specs *spec_info)
 {
 	if (spec_info->flag_minus && spec_info->flag_zero)
-		spec_info->flag_zero = 0;
-	if (spec_info->precision && spec_info->flag_zero)
-		spec_info->flag_zero = 0;
+		spec_info->flag_zero = ' ';
+	if (spec_info->precision > 0 && spec_info->flag_zero)
+		spec_info->flag_zero = ' ';
+	if (spec_info->precision == 0 && spec_info->flag_zero)
+		spec_info->flag_zero = ' ';
 }
 
-const char	*ft_put_specificator(const char *str, va_list *arg)
+const char	*ft_put_specificator(const char *str, va_list *arg, int *n)
 {
-	int n;
+	int i;
 
-	n = 0;
+	i = 0;
 	t_specs spec_info;
-	n = ft_parser(++str, &spec_info, arg);
+	i = ft_parser(++str, &spec_info, arg);
 	ft_fix_specs(&spec_info);
-	if (spec_info.type == 'd')
-		ft_print_d(arg, &spec_info);
+	if (spec_info.type == 'd' || spec_info.type == 'i' || spec_info.type == 'u')
+		*n += ft_print_d(arg, &spec_info);
 	if (*str == 'c')
 		ft_putchar(va_arg(*arg, int));
-	return (str + (n - 1));
+	return (str + (i - 1));
 }
 
 int	ft_printf(const char *format, ...)
 {
 	va_list ap;
+	int n;
 
+	n = 0;
 	va_start(ap, format);
 	while (*format != '\0')
 	{
 		if (*format == '%')
-			format = ft_put_specificator(format, &ap);
+			format = ft_put_specificator(format, &ap, &n);
 		else
+		{
 			ft_putchar(*format);
+			n++;
+		}
 		format++;
 	}
 	va_end(ap);
-	return (1);
+	return (n);
 }

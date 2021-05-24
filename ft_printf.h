@@ -5,15 +5,17 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <limits.h>
 
 // -- Structs -- //
 typedef struct s_format_info
 {
 	int				flag_minus;
-	int				flag_zero;
+	char			flag_zero;
 	int				width;
 	int				precision;
 	char			type;
+	int 			negative;
 }	t_specs;
 
 // -- Main Funcs -- //
@@ -26,9 +28,10 @@ char	*ft_itoa(int n);
 void	ft_putnbr(int nb);
 void	ft_putchar(char c);
 int		ft_strlen(const char *s);
-void	ft_putstr(char *str);
+int		ft_putstr_count(char *str, t_specs *spec_info);
 char	*ft_strchr(const char *s, int c);
 void	ft_init_specs(t_specs *spec_info);
+void	ft_print_specs(t_specs *spec_info); // delete
 
 // -- Print D -- //
 int		ft_print_d(va_list *arg, t_specs *spec_info);

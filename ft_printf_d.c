@@ -1,54 +1,63 @@
 #include "ft_printf.h"
 
-char	*ft_precision(char *nbr, int precision)
+int	ft_strlen_minus(const char *s, int n)
 {
-	char	*nbr_w_prec;
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	return (i - n);
+}
+
+char	*ft_precision(char *nbr, t_specs *spec_info)
+{
+	char	*nbr_prec;
 	int		nbr_len;
 	int		i;
 	int		j;
+	int		size;
 
 	i = 0;
 	j = 0;
-	nbr_len = ft_strlen(nbr);
-	if (precision > nbr_len)
+	size = spec_info->precision + spec_info->negative + 1;
+	nbr_len = ft_strlen_minus(nbr, spec_info->negative);
+	if (spec_info->precision > nbr_len)
 	{
-		nbr_w_prec = malloc(sizeof(char) * (precision + 1));
-		while (i < precision - nbr_len)
-			nbr_w_prec[i++] = '0';
-		while (i < precision)
-		{
-			nbr_w_prec[i] = nbr[j];
-			i++;
-			j++;
-		}
-		nbr_w_prec[i] = '\0';
+		nbr_prec = malloc(sizeof(char) * size);
+		if (spec_info->negative && ++j)
+			nbr_prec[i++] = '-';
+		while (i < spec_info->precision + spec_info->negative - nbr_len)
+			nbr_prec[i++] = '0';
+		while (i < spec_info->precision + spec_info->negative)
+			nbr_prec[i++] = nbr[j++];
+		nbr_prec[i] = '\0';
 		free(nbr);
-		return (nbr_w_prec);
+		return (nbr_prec);
 	}
 	return (nbr);
 }
 
-int	ft_aligner(char *nbr, int width, int direction, char filler)
+int	ft_aligner(char *nbr, t_specs *spec_info)
 {
 	int	i;
-	int n;
+	int	n;
 
 	n = 0;
-	if (direction == 1)
-		ft_putstr(nbr);
+	if (spec_info->flag_minus)
+		n += ft_putstr_count(nbr, spec_info);
 	i = 0;
-	if (filler)
-		filler = '0';
-	else
-		filler = ' ';
-	while (i < width - ft_strlen(nbr))
+	if (spec_info->negative && spec_info->flag_zero == '0' && ++n)
+		ft_putchar('-');
+	while (i++ < spec_info->width - ft_strlen(nbr))
 	{
-		ft_putchar(filler);
+		ft_putchar(spec_info->flag_zero);
 		n++;
-		i++;
 	}
-	if (direction == -1)
-		ft_putstr(nbr);
+	if (spec_info->negative && spec_info->flag_zero == ' ' && !spec_info->flag_minus && ++n)
+		ft_putchar('-');
+	if (!spec_info->flag_minus)
+		n += ft_putstr_count(nbr + spec_info->negative, spec_info);
 	free(nbr);
 	return (n);
 }
@@ -56,16 +65,19 @@ int	ft_aligner(char *nbr, int width, int direction, char filler)
 int	ft_print_d(va_list *arg, t_specs *spec_info)
 {
 	char	*number;
+	int		n;
 
-	number = ft_itoa(va_arg(*arg, int));
-	number = ft_precision(number, spec_info->precision);
+	n = va_arg(*arg, int);
+	if (n == 0 && spec_info->precision == 0 && spec_info->width == 0)
+		return (0);
+	if (n < 0)
+		spec_info->negative = 1;
+	number = ft_itoa(n);
+	n = 0;
+	number = ft_precision(number, spec_info);
 	if (spec_info->width > ft_strlen(number))
-	{
-		if (spec_info->flag_minus)
-			ft_aligner(number, spec_info->width, 1, spec_info->flag_zero);
-		else
-			ft_aligner(number, spec_info->width, -1, spec_info->flag_zero);
-	}
+		n += ft_aligner(number, spec_info);
 	else
-		ft_aligner(number, 0, 1, spec_info->flag_zero);
+		n += ft_aligner(number, spec_info);
+	return (n);
 }
