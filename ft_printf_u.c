@@ -63,17 +63,15 @@ static int	ft_aligner(char *nbr, t_specs *spec_info)
 	return (n);
 }
 
-int	ft_print_d_i(va_list *arg, t_specs *spec_info)
+int	ft_print_u(va_list *arg, t_specs *spec_info)
 {
-	char	*number;
-	int		n;
+	char			*number;
+	unsigned int	n;
 
-	n = va_arg(*arg, int);
+	n = va_arg(*arg, unsigned int);
 	if (n == 0 && spec_info->precision == 0 && spec_info->width == 0)
 		return (0);
-	if (n < 0)
-		spec_info->negative = 1;
-	number = ft_itoa(n);
+	number = ft_itoa_u(n);
 	n = 0;
 	number = ft_precision(number, spec_info);
 	n += ft_aligner(number, spec_info);

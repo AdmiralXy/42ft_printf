@@ -23,8 +23,8 @@ int		ft_printf(const char *s, ...);
 
 // -- Utils Funcs -- //
 int		ft_atoi(const char *str);
-int		ft_intlen(int n);
 char	*ft_itoa(int n);
+char	*ft_itoa_u(unsigned int n);
 int		ft_putstr(char *str);
 void	ft_putchar(char c);
 int		ft_strlen(const char *s);
@@ -37,6 +37,7 @@ void	ft_print_specs(t_specs *spec_info); // delete
 int		ft_print_d_i(va_list *arg, t_specs *spec_info);
 int		ft_print_c(va_list *arg, t_specs *spec_info);
 int		ft_print_s(va_list *arg, t_specs *spec_info);
+int		ft_print_u(va_list *arg, t_specs *spec_info);
 
 // -- Parser Funcs -- //
 int		ft_parser(const char *str, t_specs *spec_info, va_list *arg);

@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-static int	ft_intlen(int n)
+static unsigned int	ft_intlen(unsigned int n)
 {
 	int			i;
 	int long	number;
@@ -22,11 +22,11 @@ static int	ft_intlen(int n)
 	return (i);
 }
 
-char	*ft_itoa(int n)
+char	*ft_itoa_u(unsigned int n)
 {
-	int long	number;
-	int			size;
-	char		*nbr;
+	int long		number;
+	unsigned int	size;
+	char			*nbr;
 
 	size = ft_intlen(n);
 	number = n;
