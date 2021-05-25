@@ -10,7 +10,7 @@ int	ft_strlen_minus(const char *s, int n)
 	return (i - n);
 }
 
-char	*ft_precision(char *nbr, t_specs *spec_info)
+static char	*ft_precision(char *nbr, t_specs *spec_info)
 {
 	char	*nbr_prec;
 	int		nbr_len;
@@ -38,7 +38,7 @@ char	*ft_precision(char *nbr, t_specs *spec_info)
 	return (nbr);
 }
 
-int	ft_aligner(char *nbr, t_specs *spec_info)
+static int	ft_aligner(char *nbr, t_specs *spec_info)
 {
 	int	i;
 	int	n;

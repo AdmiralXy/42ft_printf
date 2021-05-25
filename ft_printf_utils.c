@@ -33,21 +33,17 @@ int	ft_strlen(const char *s)
 	return (i);
 }
 
-void	ft_putnbr(int nb)
+int	ft_putstr(char *str)
 {
-	int	second;
+	int	i;
 
-	second = nb % 10;
-	if (nb < -9 || nb > 9)
-		ft_putnbr(nb / 10);
-	if (nb >= 0)
-		ft_putchar('0' + second);
-	else
+	i = 0;
+	while (str[i] != '\0')
 	{
-		if (nb <= 9 && nb >= -9)
-			ft_putchar('-');
-		ft_putchar('0' - second);
+		ft_putchar(str[i]);
+		i++;
 	}
+	return (i);
 }
 
 char	*ft_strchr(const char *s, int c)
