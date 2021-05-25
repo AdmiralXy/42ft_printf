@@ -4,13 +4,16 @@ static int	ft_putstr_max(char *str, int n)
 {
 	int	i;
 
-	if (n < 0)
-		n = ft_strlen(str);
 	i = 0;
-	while (str[i] != '\0' && i < n)
+	if (str)
 	{
-		ft_putchar(str[i]);
-		i++;
+		if (n < 0)
+			n = ft_strlen(str);
+		while (str[i] != '\0' && i < n)
+		{
+			ft_putchar(str[i]);
+			i++;
+		}
 	}
 	return (i);
 }
@@ -19,11 +22,14 @@ static int	ft_strlen_max(const char *s, int n)
 {
 	int	i;
 
-	if (n < 0)
-		n = ft_strlen(s);
 	i = 0;
-	while (s[i] != '\0' && i < n)
-		i++;
+	if (s)
+	{
+		if (n < 0)
+			n = ft_strlen(s);
+		while (s[i] != '\0' && i < n)
+			i++;
+	}
 	return (i);
 }
 
@@ -53,6 +59,12 @@ int	ft_print_s(va_list *arg, t_specs *spec_info)
 
 	n = 0;
 	str = va_arg(*arg, char *);
+	if (!str)
+	{
+		str = NULL_STR;
+		if (spec_info->precision > 0 && spec_info->precision < ft_strlen(NULL_STR))
+			str = 0;
+	}
 	n += ft_aligner(str, spec_info);
 	return (n);
 }
