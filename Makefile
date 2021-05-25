@@ -5,7 +5,7 @@ RM = rm -f
 
 INCLUDES = ft_printf.h
 
-SRCS = main.c ft_printf.c ft_printf_d_i.c ft_printf_s.c ft_printf_c.c ft_printf_u.c ft_printf_utils.c ft_parser.c ft_parser_utils.c ft_atoi.c ft_itoa.c ft_itoa_u.c
+SRCS = main.c ft_printf.c ft_printf_d_i.c ft_printf_s.c ft_printf_c.c ft_printf_u.c ft_printf_p.c ft_printf_p_utils.c ft_printf_utils.c ft_parser.c ft_parser_utils.c ft_atoi.c ft_itoa.c ft_itoa_u.c
 
 OBJS = ${SRCS:.c=.o}
 

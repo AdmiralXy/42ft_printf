@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-static unsigned int	ft_intlen(unsigned int n)
+static unsigned int	ft_intlen_u(unsigned int n)
 {
 	int			i;
 	int long	number;
@@ -28,7 +28,7 @@ char	*ft_itoa_u(unsigned int n)
 	unsigned int	size;
 	char			*nbr;
 
-	size = ft_intlen(n);
+	size = ft_intlen_u(n);
 	number = n;
 	nbr = malloc(sizeof(char) * (size + 1));
 	if (!nbr)

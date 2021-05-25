@@ -35,6 +35,8 @@ const char	*ft_put_specificator(const char *str, va_list *arg, int *n)
 		*n += ft_print_c(arg, &spec_info);
 	if (spec_info.type == 's')
 		*n += ft_print_s(arg, &spec_info);
+	if (spec_info.type == 'p')
+		*n += ft_print_p(arg, &spec_info);
 	if (spec_info.type == '%' && ++*n)
 		ft_putchar('%');
 	return (str + (i - 1));
