@@ -22,7 +22,7 @@ static int	ft_aligner(char c, t_specs *spec_info)
 int	ft_print_c(va_list *arg, t_specs *spec_info)
 {
 	char	c;
-	int 	n;
+	int		n;
 
 	n = 0;
 	c = (char) va_arg(*arg, int);

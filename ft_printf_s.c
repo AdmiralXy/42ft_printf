@@ -49,10 +49,10 @@ static int	ft_aligner(char *nbr, t_specs *spec_info)
 int	ft_print_s(va_list *arg, t_specs *spec_info)
 {
 	char	*str;
-	int 	n;
+	int		n;
 
 	n = 0;
-	str = va_arg(*arg, char*);
+	str = va_arg(*arg, char *);
 	n += ft_aligner(str, spec_info);
 	return (n);
 }
