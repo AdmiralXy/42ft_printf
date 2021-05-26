@@ -10,13 +10,22 @@ void	ft_fix_specs(t_specs *spec_info)
 		spec_info->flag_zero = ' ';
 }
 
-const char	*ft_put_specificator(const char *str, va_list *arg, int *n)
+int	ft_check_specs(t_specs *spec_info)
+{
+	if ((spec_info->flag_minus || spec_info->width || spec_info->precision != -1 || spec_info->negative) && spec_info->type == '\0')
+		return (0);
+	return (1);
+}
+
+const char	*ft_put_specificator(const char *str, va_list *arg, int *n, int *error)
 {
 	int		i;
 	t_specs	spec_info;
 
 	i = 0;
 	i = ft_parser(++str, &spec_info, arg);
+	if (!ft_check_specs(&spec_info))
+		*error = 1;
 	ft_fix_specs(&spec_info);
 	if (spec_info.type == 'd' || spec_info.type == 'i')
 		*n += ft_print_d_i(arg, &spec_info);
@@ -39,19 +48,26 @@ int	ft_printf(const char *format, ...)
 {
 	va_list	ap;
 	int		n;
+	int 	error;
 
+	error = 0;
 	n = 0;
 	va_start(ap, format);
 	while (*format != '\0')
 	{
 		if (*format == '%')
-			format = ft_put_specificator(format, &ap, &n);
+			format = ft_put_specificator(format, &ap, &n, &error);
 		else
 		{
 			ft_putchar(*format);
 			n++;
 		}
 		format++;
+		if (error)
+		{
+			va_end(ap);
+			return (-1);
+		}
 	}
 	va_end(ap);
 	return (n);
