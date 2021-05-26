@@ -4,12 +4,17 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h>
-# include <limits.h>
+
+# define MacOS 0
 
 // -- Constants -- //
-# define NULL_PTR "(nil)\0"
-# define NULL_STR "(null)\0"
+#if MacOS == 1
+	# define NULL_PTR "(null)\0"
+	# define NULL_STR "(null)\0"
+#elif MacOS == 0
+	 # define NULL_PTR "(nil)\0"
+	 # define NULL_STR "(null)\0"
+#endif
 
 // -- Structs -- //
 typedef struct s_format_info
@@ -36,7 +41,6 @@ int		ft_intlen(int n);
 int		ft_putstr_count(char *str, t_specs *spec_info);
 char	*ft_strchr(const char *s, int c);
 void	ft_init_specs(t_specs *spec_info);
-void	ft_print_specs(t_specs *spec_info); // delete
 void	ft_print_adress(unsigned long value, int *counter);
 void	ft_print_adress_nullable(unsigned long value, int *counter);
 void	ft_adresslen(unsigned long value, int *counter);

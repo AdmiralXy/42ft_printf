@@ -1,14 +1,5 @@
 #include "ft_printf.h"
 
-void	ft_print_specs(t_specs *spec_info)
-{
-	printf("\nflag_minus: %d\n", spec_info->flag_minus);
-	printf("flag_zero: %d\n", spec_info->flag_zero);
-	printf("width: %d\n", spec_info->width);
-	printf("precision: %d\n", spec_info->precision);
-	printf("type: %c\n", spec_info->type);
-}
-
 void	ft_fix_specs(t_specs *spec_info)
 {
 	if (spec_info->flag_minus && spec_info->flag_zero)
