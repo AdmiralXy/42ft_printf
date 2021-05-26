@@ -1,22 +1,16 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
+// Libs
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdlib.h>
 
-# define MacOS 0
+// Constants
+# define NULL_PTR "(nil)\0"
+# define NULL_STR "(null)\0"
 
-// -- Constants -- //
-#if MacOS == 1
-	# define NULL_PTR "(null)\0"
-	# define NULL_STR "(null)\0"
-#elif MacOS == 0
-	 # define NULL_PTR "(nil)\0"
-	 # define NULL_STR "(null)\0"
-#endif
-
-// -- Structs -- //
+// Structs
 typedef struct s_format_info
 {
 	int				flag_minus;
@@ -24,13 +18,13 @@ typedef struct s_format_info
 	int				width;
 	int				precision;
 	char			type;
-	int 			negative;
+	int				negative;
 }	t_specs;
 
-// -- Main Funcs -- //
+// Main Funcs
 int		ft_printf(const char *s, ...);
 
-// -- Utils Funcs -- //
+// Utils Funcs
 int		ft_atoi(const char *str);
 char	*ft_itoa(int n);
 char	*ft_itoa_u(unsigned int n);
@@ -45,9 +39,9 @@ void	ft_print_adress(unsigned long value, int *counter);
 void	ft_print_adress_nullable(unsigned long value, int *counter);
 void	ft_adresslen(unsigned long value, int *counter);
 void	ft_adresslen_nullable(unsigned long value, int *counter);
-char	*ft_itoa_hex(unsigned value, int upper_case);
+char	*ft_itoa_hex(unsigned int value, int upper_case);
 
-// -- Print Funcs -- //
+// Print Funcs
 int		ft_print_d_i(va_list *arg, t_specs *spec_info);
 int		ft_print_c(va_list *arg, t_specs *spec_info);
 int		ft_print_s(va_list *arg, t_specs *spec_info);
@@ -55,7 +49,7 @@ int		ft_print_u(va_list *arg, t_specs *spec_info);
 int		ft_print_p(va_list *arg, t_specs *spec_info);
 int		ft_print_x_X(va_list *arg, t_specs *spec_info);
 
-// -- Parser Funcs -- //
+// Parser
 int		ft_parser(const char *str, t_specs *spec_info, va_list *arg);
 
 #endif
