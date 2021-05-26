@@ -1,5 +1,4 @@
 #include "ft_printf.h"
-#include "ft_parser.h"
 
 int	ft_parser(const char *str, t_specs *spec_info, va_list *arg)
 {

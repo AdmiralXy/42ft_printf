@@ -52,4 +52,10 @@ int		ft_print_x_X(va_list *arg, t_specs *spec_info);
 // Parser
 int		ft_parser(const char *str, t_specs *spec_info, va_list *arg);
 
+// Parser Utils
+int	ft_parse_flags(const char *str, t_specs *spec_info);
+int	ft_parse_width(const char *str, t_specs *spec_info, va_list *arg);
+int	ft_parse_precision(const char *str, t_specs *spec_info, va_list *arg);
+int	ft_parse_type(const char *str, t_specs *spec_info);
+
 #endif

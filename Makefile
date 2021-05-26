@@ -3,7 +3,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror -I.
 RM = rm -f
 
-INCLUDES = ft_printf.h ft_parser.h
+INCLUDES = ft_printf.h
 
 SRCS = ft_printf.c\
 		ft_printf_d_i.c\
