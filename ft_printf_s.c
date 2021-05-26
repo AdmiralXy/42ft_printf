@@ -62,7 +62,8 @@ int	ft_print_s(va_list *arg, t_specs *spec_info)
 	if (!str)
 	{
 		str = NULL_STR;
-		if (spec_info->precision > 0 && spec_info->precision < ft_strlen(NULL_STR))
+		if (spec_info->precision > 0
+			&& spec_info->precision < ft_strlen(NULL_STR))
 			str = 0;
 	}
 	n += ft_aligner(str, spec_info);

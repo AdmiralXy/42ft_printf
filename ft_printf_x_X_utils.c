@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-static void ft_strrev(char *str)
+static void	ft_strrev(char *str)
 {
 	int		i;
 	int		j;
@@ -18,7 +18,7 @@ static void ft_strrev(char *str)
 	}
 }
 
-static int	ft_hexlen(unsigned value)
+static int	ft_hexlen(unsigned int value)
 {
 	int	i;
 
@@ -31,12 +31,12 @@ static int	ft_hexlen(unsigned value)
 	return (i);
 }
 
-static char *ft_dec_to_hexstr(unsigned value, int upper_case)
+static char	*ft_dec_to_hexstr(unsigned int value, int upper_case)
 {
 	int		i;
 	int		len;
 	char	*hexstr;
-	int 	remainder;
+	int		remainder;
 
 	if (upper_case)
 		upper_case = 'A';
@@ -60,7 +60,7 @@ static char *ft_dec_to_hexstr(unsigned value, int upper_case)
 	return (hexstr);
 }
 
-char	*ft_itoa_hex(unsigned value, int upper_case)
+char	*ft_itoa_hex(unsigned int value, int upper_case)
 {
 	char	*hexstr;
 

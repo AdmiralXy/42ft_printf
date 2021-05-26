@@ -1,18 +1,18 @@
 #include "ft_printf.h"
 
-void ft_adresslen(unsigned long value, int *counter)
+void	ft_adresslen(unsigned long value, int *counter)
 {
 	if (value == 0)
 	{
 		*counter += 2;
-		return;
+		return ;
 	}
 	value /= 16;
 	ft_adresslen(value, counter);
 	*counter += 1;
 }
 
-void ft_print_adress(unsigned long value, int *counter)
+void	ft_print_adress(unsigned long value, int *counter)
 {
 	unsigned long	rem;
 
@@ -21,12 +21,11 @@ void ft_print_adress(unsigned long value, int *counter)
 		*counter += 2;
 		ft_putchar('0');
 		ft_putchar('x');
-		return;
+		return ;
 	}
 	rem = value % 16;
 	value /= 16;
 	ft_print_adress(value, counter);
-
 	if (rem > 9)
 		ft_putchar((char)(rem - 10 + 'a'));
 	else
@@ -34,7 +33,7 @@ void ft_print_adress(unsigned long value, int *counter)
 	*counter += 1;
 }
 
-void ft_print_adress_nullable(unsigned long value, int *counter)
+void	ft_print_adress_nullable(unsigned long value, int *counter)
 {
 	if (value == 0)
 	{
@@ -47,7 +46,7 @@ void ft_print_adress_nullable(unsigned long value, int *counter)
 	}
 }
 
-void ft_adresslen_nullable(unsigned long value, int *counter)
+void	ft_adresslen_nullable(unsigned long value, int *counter)
 {
 	if (value == 0)
 	{
