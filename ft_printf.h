@@ -37,9 +37,11 @@ int		ft_putstr_count(char *str, t_specs *spec_info);
 char	*ft_strchr(const char *s, int c);
 void	ft_init_specs(t_specs *spec_info);
 void	ft_print_adress(unsigned long value, int *counter, t_specs *spec_info);
-void	ft_print_adress_nullable(unsigned long value, int *counter, t_specs *spec_info);
+void	ft_print_adress_nullable(unsigned long value,
+			int *counter, t_specs *spec_info);
 void	ft_adresslen(unsigned long value, int *counter);
-void	ft_adresslen_nullable(unsigned long value, int *counter, t_specs *spec_info);
+void	ft_adresslen_nullable(unsigned long value,
+			int *counter, t_specs *spec_info);
 char	*ft_itoa_hex(unsigned int value, int upper_case);
 
 // Print Funcs

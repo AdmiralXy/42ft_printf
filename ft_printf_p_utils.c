@@ -12,7 +12,8 @@ void	ft_adresslen(unsigned long value, int *counter)
 	*counter += 1;
 }
 
-void	ft_print_adress(unsigned long value, int *counter, t_specs *spec_info)
+void	ft_print_adress(unsigned long value,
+			int *counter, t_specs *spec_info)
 {
 	unsigned long	rem;
 
@@ -33,7 +34,8 @@ void	ft_print_adress(unsigned long value, int *counter, t_specs *spec_info)
 	*counter += 1;
 }
 
-void	ft_print_adress_nullable(unsigned long value, int *counter, t_specs *spec_info)
+void	ft_print_adress_nullable(unsigned long value,
+			int *counter, t_specs *spec_info)
 {
 	if (value == 0 && spec_info->precision != 0)
 	{
@@ -46,7 +48,8 @@ void	ft_print_adress_nullable(unsigned long value, int *counter, t_specs *spec_i
 	}
 }
 
-void	ft_adresslen_nullable(unsigned long value, int *counter, t_specs *spec_info)
+void	ft_adresslen_nullable(unsigned long value,
+			int *counter, t_specs *spec_info)
 {
 	if (value == 0 && spec_info->precision != 0)
 	{
