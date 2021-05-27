@@ -7,7 +7,8 @@
 # include <stdlib.h>
 
 // Constants
-# define NULL_PTR "(nil)\0"
+# define MACOS 1
+# define NULL_PTR "0x0\0"
 # define NULL_STR "(null)\0"
 
 // Structs
