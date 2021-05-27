@@ -12,7 +12,7 @@ void	ft_adresslen(unsigned long value, int *counter)
 	*counter += 1;
 }
 
-void	ft_print_adress(unsigned long value, int *counter)
+void	ft_print_adress(unsigned long value, int *counter, t_specs *spec_info)
 {
 	unsigned long	rem;
 
@@ -25,7 +25,7 @@ void	ft_print_adress(unsigned long value, int *counter)
 	}
 	rem = value % 16;
 	value /= 16;
-	ft_print_adress(value, counter);
+	ft_print_adress(value, counter, spec_info);
 	if (rem > 9)
 		ft_putchar((char)(rem - 10 + 'a'));
 	else
@@ -33,22 +33,22 @@ void	ft_print_adress(unsigned long value, int *counter)
 	*counter += 1;
 }
 
-void	ft_print_adress_nullable(unsigned long value, int *counter)
+void	ft_print_adress_nullable(unsigned long value, int *counter, t_specs *spec_info)
 {
-	if (value == 0)
+	if (value == 0 && spec_info->precision != 0)
 	{
 		*counter += ft_strlen(NULL_PTR);
 		ft_putstr(NULL_PTR);
 	}
 	else
 	{
-		ft_print_adress(value, counter);
+		ft_print_adress(value, counter, spec_info);
 	}
 }
 
-void	ft_adresslen_nullable(unsigned long value, int *counter)
+void	ft_adresslen_nullable(unsigned long value, int *counter, t_specs *spec_info)
 {
-	if (value == 0)
+	if (value == 0 && spec_info->precision != 0)
 	{
 		*counter += ft_strlen(NULL_PTR);
 	}

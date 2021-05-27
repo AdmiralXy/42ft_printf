@@ -7,7 +7,7 @@ static int	ft_aligner(unsigned long nbr, int nbr_len, t_specs *spec_info)
 
 	n = 0;
 	if (spec_info->flag_minus)
-		ft_print_adress_nullable(nbr, &n);
+		ft_print_adress_nullable(nbr, &n, spec_info);
 	i = 0;
 	while (i++ < spec_info->width - nbr_len)
 	{
@@ -15,7 +15,7 @@ static int	ft_aligner(unsigned long nbr, int nbr_len, t_specs *spec_info)
 		n++;
 	}
 	if (!spec_info->flag_minus)
-		ft_print_adress_nullable(nbr, &n);
+		ft_print_adress_nullable(nbr, &n, spec_info);
 	return (n);
 }
 
@@ -28,7 +28,7 @@ int	ft_print_p(va_list *arg, t_specs *spec_info)
 	n = 0;
 	number_len = 0;
 	number = va_arg(*arg, unsigned long);
-	ft_adresslen_nullable(number, &number_len);
+	ft_adresslen_nullable(number, &number_len, spec_info);
 	n += ft_aligner(number, number_len, spec_info);
 	return (n);
 }

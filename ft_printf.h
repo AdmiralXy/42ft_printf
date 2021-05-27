@@ -36,10 +36,10 @@ int		ft_intlen(int n);
 int		ft_putstr_count(char *str, t_specs *spec_info);
 char	*ft_strchr(const char *s, int c);
 void	ft_init_specs(t_specs *spec_info);
-void	ft_print_adress(unsigned long value, int *counter);
-void	ft_print_adress_nullable(unsigned long value, int *counter);
+void	ft_print_adress(unsigned long value, int *counter, t_specs *spec_info);
+void	ft_print_adress_nullable(unsigned long value, int *counter, t_specs *spec_info);
 void	ft_adresslen(unsigned long value, int *counter);
-void	ft_adresslen_nullable(unsigned long value, int *counter);
+void	ft_adresslen_nullable(unsigned long value, int *counter, t_specs *spec_info);
 char	*ft_itoa_hex(unsigned int value, int upper_case);
 
 // Print Funcs
@@ -54,9 +54,9 @@ int		ft_print_x_X(va_list *arg, t_specs *spec_info);
 int		ft_parser(const char *str, t_specs *spec_info, va_list *arg);
 
 // Parser Utils
-int	ft_parse_flags(const char *str, t_specs *spec_info);
-int	ft_parse_width(const char *str, t_specs *spec_info, va_list *arg);
-int	ft_parse_precision(const char *str, t_specs *spec_info, va_list *arg);
-int	ft_parse_type(const char *str, t_specs *spec_info);
+int		ft_parse_flags(const char *str, t_specs *spec_info);
+int		ft_parse_width(const char *str, t_specs *spec_info, va_list *arg);
+int		ft_parse_precision(const char *str, t_specs *spec_info, va_list *arg);
+int		ft_parse_type(const char *str, t_specs *spec_info);
 
 #endif

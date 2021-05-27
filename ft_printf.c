@@ -44,8 +44,8 @@ const char	*ft_put_specificator(const char *str, va_list *arg, int *n, int *e)
 		*n += ft_print_p(arg, &spec_info);
 	if (spec_info.type == 'x' || spec_info.type == 'X')
 		*n += ft_print_x_X(arg, &spec_info);
-	if (spec_info.type == '%' && ++*n)
-		ft_putchar('%');
+	if (spec_info.type == '%')
+		*n += ft_print_c(arg, &spec_info);
 	return (str + (i - 1));
 }
 

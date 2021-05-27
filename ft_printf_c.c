@@ -25,7 +25,10 @@ int	ft_print_c(va_list *arg, t_specs *spec_info)
 	int		n;
 
 	n = 0;
-	c = (char) va_arg(*arg, int);
+	if (spec_info->type != '%')
+		c = (char) va_arg(*arg, int);
+	else
+		c = '%';
 	n += ft_aligner(c, spec_info);
 	return (n);
 }
