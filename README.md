@@ -8,7 +8,7 @@ External functions: malloc, free, write, va_start, va_arg, va_copy, va_end.
 
 * The prototype of ft_printf:
   * `int ft_printf(const char *, ...)`
-* It isn't do the buffer management like the real printf.
+* It doesn't do the buffer management like the real printf.
 * It can manage the following conversions: cspdiuxX%
 * It can manage any combination of the following flags: ’-0.*’ and minimum field
 width with all conversions
