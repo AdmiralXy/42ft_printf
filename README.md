@@ -6,8 +6,6 @@ This project is all about recreating the standard printf() function.
 
 External functions: malloc, free, write, va_start, va_arg, va_copy, va_end.
 
-All functions are created in accordance with [Norm](https://github.com/42School/norminette) - the bunch of rules how code should be formatted.
-
 * The prototype of ft_printf:
   * `int ft_printf(const char *, ...)`
 * It isn't do the buffer management like the real printf.
@@ -16,6 +14,7 @@ All functions are created in accordance with [Norm](https://github.com/42School/
 width with all conversions
 * Makefile compiles object files and creates a static library for use
 
+All functions are created in accordance with [Norm](https://github.com/42School/norminette) - the bunch of rules how code should be formatted.
 
 ### Requirements & usage
 Project requires:
