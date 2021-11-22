@@ -23,7 +23,6 @@ Project requires:
 
 Tested on:
 * MacOS 10.15
-* Linux Ubuntu 20.04
 
 Compiling:
 ```
